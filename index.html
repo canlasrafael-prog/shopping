@@ -314,26 +314,32 @@
             z-index: 1000;
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
+            padding: 20px;
         }
 
         .modal {
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            width: 100%;
+            background: var(--white);
             max-width: 440px;
+            width: 100%;
             border-radius: 20px;
-            padding: 32px;
+            padding: 0 32px 32px 32px;
             position: relative;
             box-shadow: var(--shadow-lg);
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid var(--glass-border);
         }
 
         .modal-header {
+            padding: 32px 0 16px 0;
             margin-bottom: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            z-index: 10;
         }
 
         .image-preview {
