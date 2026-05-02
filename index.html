@@ -1310,18 +1310,18 @@
             saveBtn.textContent = 'Saving...';
 
             try {
-
+                const compressedImage = await compressImage(image);
                 if (state.editingId) {
-                    await db.collection('products').doc(state.editingId).update({ name, desc, price, image });
+                    await db.collection('products').doc(state.editingId).update({ name, desc, price, image: compressedImage });
                     showToast('Product updated!');
                 } else {
-                    await db.collection('products').add({ name, desc, price, image, available: true, timestamp: Date.now() });
+                    await db.collection('products').add({ name, desc, price, image: compressedImage, available: true, timestamp: Date.now() });
                     showToast('Product added successfully!');
                 }
                 closeModal();
             } catch (error) {
-                console.error("Error saving product: ", error);
-                showToast('Error saving product.', 'error');
+                console.error("ERROR SAVING PRODUCT:", error);
+                showToast('Error saving product. Check console.', 'error');
             } finally {
                 saveBtn.disabled = false;
                 saveBtn.textContent = 'Save Product';
